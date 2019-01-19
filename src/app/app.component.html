@@ -2,7 +2,7 @@
   <div class="column is-10 is-offset-1">
     <span>We have <strong>{{ stats.reducedUrls }}</strong> URLs averaging <strong>{{ stats.averageUrlSize }}</strong>
       letters long that are now <strong>{{ stats.reductionPercentage + '%'}}</strong> smaller,
-      with over <strong>{{ stats.reducedLeters }}</strong> reduced letters!</span>
+      with over <strong>{{ stats.reducedLeters }}</strong> reduced letters.</span>
   </div>
 </div>
 
@@ -17,7 +17,7 @@
   <div class="column is-10 is-offset-1">
     <div class="field has-addons is-horizontal">
       <div class="control is-expanded">
-        <input class="input" type="text" placeholder="Enter URL" [(ngModel)]="orginalUrl">
+        <input id="txtUrl" class="input" type="url" placeholder="Enter URL" [(ngModel)]="orginalUrl" required>
       </div>
       <div class="control">
         <button class="button is-info" (click)="shortenUrl()">
