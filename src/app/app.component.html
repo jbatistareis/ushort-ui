@@ -1,3 +1,18 @@
+<div class="columns has-text-centered" *ngIf="stats">
+  <div class="column is-10 is-offset-1">
+    <span>We have <strong>{{ stats.reducedUrls }}</strong> URLs averaging <strong>{{ stats.averageUrlSize }}</strong>
+      letters long that are now <strong>{{ stats.reductionPercentage + '%'}}</strong> smaller,
+      with over <strong>{{ stats.reducedLeters }}</strong> reduced letters!</span>
+  </div>
+</div>
+
+<div class="columns has-text-centered" *ngIf="stats">
+  <div class="column is-10 is-offset-1">
+    <span><strong>Keep 'em comin'!</strong></span>
+  </div>
+</div>
+
+
 <div class="columns">
   <div class="column is-10 is-offset-1">
     <div class="field has-addons is-horizontal">
@@ -14,17 +29,16 @@
   </div>
 </div>
 
+<div class="columns">
+  <div class="column is-4 is-offset-4">
+
+  </div>
+</div>
+
 <div class="columns" *ngIf="shortenedUrl">
-  <div class="column is-10 is-offset-1">
-    <table class="table">
+  <div class="column is-8 is-offset-2">
+    <table class="table is-fullwidth">
       <tbody>
-        <tr>
-          <th>
-            <span class="icon"><i class="fas fa-link"></i></span>
-            <span>Original Version:</span>
-          </th>
-          <td>{{shortenedUrl.fullUrl}}</td>
-        </tr>
         <tr>
           <th>
             <span class="icon"><i class="fas fa-link"></i></span>
@@ -33,6 +47,13 @@
           <td><a href="{{ 'https://ushort-api.herokuapp.com/' + shortenedUrl.shortUrl }}">
               {{ 'https://ushort-api.herokuapp.com/' + shortenedUrl.shortUrl }}</a>
           </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="icon"><i class="fas fa-link"></i></span>
+            <span>Original Version:</span>
+          </th>
+          <td>{{shortenedUrl.fullUrl}}</td>
         </tr>
         <tr>
           <th>
