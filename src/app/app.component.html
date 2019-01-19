@@ -2,10 +2,10 @@
   <div class="column is-10 is-offset-1">
     <div class="field has-addons is-horizontal">
       <div class="control is-expanded">
-        <input class="input" type="text" placeholder="Enter URL">
+        <input class="input" type="text" placeholder="Enter URL" [(ngModel)]="orginalUrl">
       </div>
       <div class="control">
-        <button class="button is-info">
+        <button class="button is-info" (click)="shortenUrl()">
           <span class="icon"><i class="fas fa-compress-arrows-alt"></i></span>
           <span>Compress me!</span>
         </button>
@@ -14,32 +14,45 @@
   </div>
 </div>
 
-<div class="columns">
+<div class="columns" *ngIf="shortenedUrl">
   <div class="column is-10 is-offset-1">
     <table class="table">
       <tbody>
         <tr>
           <th>
             <span class="icon"><i class="fas fa-link"></i></span>
-            <span>Original URL:</span>
+            <span>Original Version:</span>
           </th>
-          <td></td>
+          <td>{{shortenedUrl.fullUrl}}</td>
         </tr>
         <tr>
           <th>
             <span class="icon"><i class="fas fa-link"></i></span>
             <span>Short version:</span>
           </th>
-          <td></td>
+          <td><a href="{{ 'https://ushort-api.herokuapp.com/' + shortenedUrl.shortUrl }}">
+              {{ 'https://ushort-api.herokuapp.com/' + shortenedUrl.shortUrl }}</a>
+          </td>
         </tr>
         <tr>
           <th>
             <span class="icon"><i class="fas fa-clock"></i></span>
             <span>Expires on:</span>
           </th>
-          <td></td>
+          <td>{{parseDate(shortenedUrl.expires)}}</td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
+
+<div id="errorModal" [className]="errorMessage ? 'modal is-active' : 'modal'">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+      <span>{{errorMessage}}</span>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeErrorModal()"></button>
 </div>
