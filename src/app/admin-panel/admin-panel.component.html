@@ -1,3 +1,64 @@
-<p>
-  admin-panel works!
-</p>
+<div class="columns has-text-centered" *ngIf="page">
+  <div class="column is-10 is-offset-1">
+    <nav class="panel">
+
+      <div class="panel-block">
+        <div class="column is-fullwidth">
+          <div class="field has-addons is-horizontal">
+            <div class="control is-expanded">
+              <input id="txtUrl" class="input" type="url" placeholder="Enter URL" [(ngModel)]="searchUrl" required>
+            </div>
+            <div class="control">
+              <button class="button is-info" (click)="findUrl()">
+                <span class="icon"><i class="fas fa-search"></i></span>
+                <span>Find</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-block">
+        <table class="table is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <th>Original URL</th>
+            <th>Short URL</th>
+            <th>Expires on</th>
+            <th></th>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let address of page.content">
+              <td>{{ address.fullUrl }}</td>
+              <td>{{ address.shortUrl }}</td>
+              <td>{{ parseDate(address.expires) }}</td>
+              <td>
+                <button class="button" (click)="removeEntry(address.shortUrl)"><span class="icon"><i class="fas fa-times"></i></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-block">
+        <nav class="pagination" role="navigation" aria-label="pagination">
+          <a class="pagination-previous is-pulled-left" [attr.disabled]="page.first ? '' : null" (click)="previousPage()">Previous</a>
+          <a class="pagination-next is-pulled-right" [attr.disabled]="page.last ? '' : null" (click)="nextPage()">Next</a>
+        </nav>
+      </div>
+
+    </nav>
+  </div>
+</div>
+
+
+<div id="errorModal" [className]="errorMessage ? 'modal is-active' : 'modal'">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+      <span>{{errorMessage}}</span>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeErrorModal()"></button>
+</div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams } from '@angular/common/http';
 import * as moment from 'moment';
 
 import { ShortenedUrl } from './shortenedUrl'
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get("https://ushort-api.herokuapp.com/api/stats").subscribe(
+    this.httpClient.get('https://ushort-api.herokuapp.com/api/stats').subscribe(
       (response) => this.stats = response as Stats,
       (error) => {
         this.errorMessage = error.message;
@@ -37,7 +36,7 @@ export class HomeComponent implements OnInit {
   shortenUrl() {
     if (this.orginalUrl) {
       let params = new HttpParams().set('url', this.orginalUrl);
-      this.httpClient.get("https://ushort-api.herokuapp.com/api/shorten", { params }).subscribe(
+      this.httpClient.get('https://ushort-api.herokuapp.com/api/shorten', { params }).subscribe(
         (response) => this.shortenedUrl = response as ShortenedUrl,
         (error) => {
           this.shortenedUrl = undefined;
