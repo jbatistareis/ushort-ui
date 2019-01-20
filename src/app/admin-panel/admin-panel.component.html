@@ -30,7 +30,7 @@
           <tbody>
             <tr *ngFor="let address of page.content">
               <td>{{ address.fullUrl }}</td>
-              <td>{{ address.shortUrl }}</td>
+              <td><a href="{{ 'https://ushort-api.herokuapp.com/' + address.shortUrl }}">{{ address.shortUrl }}</a></td>
               <td>{{ parseDate(address.expires) }}</td>
               <td>
                 <button class="button" (click)="removeEntry(address.shortUrl)"><span class="icon"><i class="fas fa-times"></i></span></button>
