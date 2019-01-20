@@ -10,10 +10,10 @@ import * as moment from 'moment';
 export class AdminPanelComponent implements OnInit {
 
   public errorMessage: string = undefined;
-
-  private searchUrl: string = undefined;
-  private page: any = undefined;
-  private pageNumber: number = 0;
+  public searchUrl: string = undefined;
+  public page: any = undefined;
+  public pageNumber: number = 0;
+  
   private headers: HttpHeaders = new HttpHeaders();
 
   constructor(private httpClient: HttpClient) { }
