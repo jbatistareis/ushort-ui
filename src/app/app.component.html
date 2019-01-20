@@ -1,1 +1,29 @@
-<router-outlet></router-outlet>
+<section class="hero is-light is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                <span class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-link fa-stack-2x fa-inverse"></i>
+                </span>
+                <span>U-short</span>
+            </h1>
+        </div>
+    </div>
+
+    <div class="tabs is-centered is-boxed">
+        <ul>
+            <li><a routerLink="/" routerLinkActive="active">Shortener</a></li>
+            <li><a routerLink="/admin" routerLinkActive="active">Administration</a></li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="columns">
+            <div class="column"></div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</section>
